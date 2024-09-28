@@ -29,7 +29,7 @@ pipeline {
         stage("quality gate"){
            steps {
                 script {
-                    waitForQualityGate abortPipeline: false, credentialsId: 'Sonar-cred' 
+                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar-cred' 
                 }
             } 
         }
@@ -77,7 +77,7 @@ pipeline {
         }
         stage ("Deploy to Conatiner") {
             steps {
-                sh 'docker run -d --name starbucks -p 3000:3000 sunilmargale/starbucks:latest'
+                sh 'docker run -d --name starbucks -p 4000:4000 sunilmargale/starbucks:latest'
             }
         }
     }
